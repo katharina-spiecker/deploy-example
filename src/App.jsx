@@ -1,19 +1,21 @@
 import './App.css'
-import { Route, Routes, NavLink } from 'react-router-dom';
+import { Route, Routes, NavLink, useParams } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
     <nav>
-      <NavLink to="/">Startseite</NavLink>
-      <NavLink to="/about">Über uns</NavLink>
-      <NavLink to="/contact">Kontakt</NavLink>
+      <NavLink to="/deploy-example/">Startseite</NavLink>
+      <NavLink to="/deploy-example/about">Über uns</NavLink>
+      <NavLink to="/deploy-example/hi/contact">Kontakt</NavLink>
     </nav>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/deploy-example">
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path=":test/contact" element={<Contact />} />
+      </Route>
     </Routes>
     </>
   )
@@ -32,8 +34,9 @@ function About() {
 }
 
 function Contact() {
+  const {test} = useParams();
   return (
-    <h1>Contact</h1>
+    <h1>Contact {test}</h1>
   )
 }
 
