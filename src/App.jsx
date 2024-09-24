@@ -1,31 +1,26 @@
 import './App.css'
 import { Route, Routes, NavLink, useParams } from 'react-router-dom';
+import Home from "./components/Home";
 
 function App() {
 
   return (
     <>
     <nav>
-      <NavLink to="/deploy-example/">Startseite</NavLink>
-      <NavLink to="/deploy-example/about">Über uns</NavLink>
-      <NavLink to="/deploy-example/hi/contact">Kontakt</NavLink>
+      <NavLink to="/">Startseite</NavLink>
+      <NavLink to="/about">Über uns</NavLink>
     </nav>
     <Routes>
-      <Route path="/deploy-example">
+      <Route path="/">
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path=":test/contact" element={<Contact />} />
       </Route>
     </Routes>
     </>
   )
 }
 
-function Home() {
-  return (
-    <h1>Home</h1>
-  )
-}
+
 
 function About() {
   return (
